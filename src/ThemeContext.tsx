@@ -1,9 +1,14 @@
 import * as React from "react";
 import {CSSProperties} from "react";
 
-export type Theme = {
-    [element: string]: CSSProperties
+type ThemeableComponents = {
+    editableNumBox: 'editableNumBox';
+    constNumBox: 'constNumBox';
 }
+
+export type Theme = {
+    [element in keyof ThemeableComponents]: CSSProperties;
+};
 type Themes = {
     default: Theme,
     vibrant: Theme,
@@ -54,10 +59,7 @@ export const themes: Themes = {
 
 export type ThemeContextProps = { theme: Theme, toggleTheme?: () => void };
 const ThemeContext = React.createContext<ThemeContextProps>({
-    theme: {
-        default: themes.default,
-        vibrant: themes.vibrant
-    }
+    theme: themes.default
 });
 
 export default ThemeContext;

@@ -6,7 +6,7 @@ type Props = {};
 export const ToggleThemeButton: React.FC<Props> = (props) => {
     return (
         <ThemeContext.Consumer>
-            {({theme, toggleTheme}) => <button style={theme} onClick={toggleTheme} {...props}>Toggle theme</button>}
+            {({theme, toggleTheme}) => <button onClick={toggleTheme} {...props}>Toggle theme</button>}
         </ThemeContext.Consumer>
 
     );
