@@ -45,7 +45,7 @@ export const themes: Themes = {
             paddingTop: '0.5em',
         },
         constNumBox: {
-            color: 'black',
+            color: 'white',
             backgroundColor: 'blue',
             height: '3em',
             textAlign: 'center',

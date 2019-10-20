@@ -5,33 +5,21 @@ import Grid, {SudokuGrid} from "./Grid";
 import {Col, Row} from "antd";
 import {ThemeProvider} from "./ThemeProvider";
 
-let grid: SudokuGrid = {
-  0: {
-    0: {isEditable: true, value: 1},
-    1: {isEditable: false, value: 2},
-    2: {isEditable: false, value: 3}
-  },
-  1: {
-    0: {isEditable: false, value: 4},
-    1: {isEditable: false, value: 5},
-    2: {isEditable: false, value: 6}
-  },
-  2: {
-    0: {isEditable: false, value: 7},
-    1: {isEditable: false, value: 8},
-    2: {isEditable: false, value: 9}
-  }
-};
+let data = require('./sudoku.json');
 
-function getRow(grid: SudokuGrid) {
-  let row1 = <Row gutter={[12, 2]}><Col span={8}><Grid sudokuGrid={grid}/></Col><Col span={8}><Grid sudokuGrid={grid}/></Col><Col
-      span={8}><Grid sudokuGrid={grid}/></Col></Row>;
+function getRow(gridData: any, idx: number) {
+    let group1: SudokuGrid = gridData[idx * 3 + 0];
+    let group2: SudokuGrid = gridData[idx * 3 + 1];
+    let group3: SudokuGrid = gridData[idx * 3 + 2];
+    let row1 = <Row gutter={[12, 2]}><Col span={8}><Grid sudokuGrid={group1}/></Col><Col span={8}><Grid
+        sudokuGrid={group2}/></Col><Col
+        span={8}><Grid sudokuGrid={group3}/></Col></Row>;
   return <Row type="flex" justify="space-around" align="middle"><Col span={10}>{row1}</Col></Row>;
 }
 const App: React.FC = () => {
   let board = [];
   for (let i = 0; i < 3; i++) {
-    board.push(getRow(grid));
+      board.push(getRow(data, i));
   }
     return (
         <ThemeProvider>
