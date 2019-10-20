@@ -1,6 +1,7 @@
 import React from "react";
 import {InputNumber} from 'antd';
 import './NumberBox.css';
+import ThemeContext from "./ThemeContext";
 
 export interface NumberBoxProp {
     isEditable: boolean;
@@ -12,6 +13,8 @@ interface NumberBoxState {
 }
 
 class NumberBox extends React.Component<NumberBoxProp, NumberBoxState> {
+    static contextType = ThemeContext;
+    context!: React.ContextType<typeof ThemeContext>;
     constructor(props: NumberBoxProp) {
         super(props);
         this.state = {value: this.props.value}
@@ -24,14 +27,22 @@ class NumberBox extends React.Component<NumberBoxProp, NumberBoxState> {
     };
 
     public render(): React.ReactNode {
+
         let theme = this.props.isEditable ? "EditableNumberBox" : "ConstNumberBox";
         let childElements = <></>;
         if (this.props.isEditable) {
+            let editableStyle = this.context.theme.editableNumBox;
             childElements =
-                <div className={theme}><InputNumber min={1} max={9}
-                                                    onChange={this.setValue}/></div>
+                <div style={editableStyle}><InputNumber min={1} max={9}
+                                                        onChange={this.setValue} style={{
+                    ...editableStyle,
+                    height: '100%',
+                    width: '100%',
+                    border: 'none'
+                }}/></div>
         } else {
-            childElements = <div className={theme}>{this.state.value}</div>
+            let constStyle = this.context.theme.constNumBox;
+            childElements = <div style={constStyle}>{this.state.value}</div>
         }
         return childElements
 

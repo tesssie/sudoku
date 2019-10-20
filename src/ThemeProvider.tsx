@@ -7,10 +7,10 @@ interface State {
 }
 
 export class ThemeProvider extends React.Component<{}, State> {
-    readonly state: State = {theme: themes.light};
+    readonly state: State = {theme: themes.default};
 
     toggleTheme = () => {
-        let theme = this.state.theme === themes.light ? themes.dark : themes.light
+        let theme = this.state.theme === themes.default ? themes.vibrant : themes.default;
         this.setState({theme});
     };
 
@@ -20,6 +20,7 @@ export class ThemeProvider extends React.Component<{}, State> {
         return (
             <ThemeContext.Provider value={{theme, toggleTheme}}>
                 <ToggleThemeButton/>
+                {this.props.children}
             </ThemeContext.Provider>
 
         )

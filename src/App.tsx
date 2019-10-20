@@ -33,11 +33,10 @@ const App: React.FC = () => {
   for (let i = 0; i < 3; i++) {
     board.push(getRow(grid));
   }
-  return (<>
-        <div><ThemeProvider/></div>
+    return (
+        <ThemeProvider>
         <div className="outer-container">{board}</div>
-      </>
-  );
+        </ThemeProvider>);
 };
 
 export default App;
