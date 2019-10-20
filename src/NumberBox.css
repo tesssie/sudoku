@@ -1,0 +1,36 @@
+.ConstNumberBox {
+    background-color: darkkhaki;
+    height: 3em;
+    text-align: center;
+    backface-visibility: visible;
+    border: thin solid black;
+    padding-top: 0.5em;
+}
+
+.EditableNumberBox {
+    background-color: burlywood;
+    height: 3em;
+    text-align: center;
+    backface-visibility: visible;
+    border: thin solid black;
+    padding-top: 0.5em;
+}
+
+.ant-input-number {
+    background-color: burlywood;
+    border: none;
+    width: inherit;
+}
+
+.ant-input-number:focus {
+    background-color: burlywood;
+    border: none;
+    width: inherit;
+}
+
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
